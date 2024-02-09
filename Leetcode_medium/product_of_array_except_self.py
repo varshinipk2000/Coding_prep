@@ -24,4 +24,31 @@ class Solution:
             for i in range(0,len(nums)):
                 result.append(int(p/nums[i]))
 
-        return result      
+        return result     
+
+        ''' Alternate method without using division operator
+        prefix = [1]*len(nums)
+        post = [1]*len(nums)
+        p = 1
+
+        for i in range(0,len(nums)):
+            if i ==0:
+                prefix[i] = 1
+            else:
+                p = p* nums[i-1]
+                prefix[i] = p
+
+        p = 1
+
+        for i in range(len(nums)-1,-1,-1):
+            if i==len(nums)-1:
+                post[i] = 1  
+            else:
+                p = p*nums[i+1]
+                post[i] = p
+
+        result = []
+        for i in range(0, len(nums)):
+            result.append(prefix[i]*post[i])
+
+        return result '''
