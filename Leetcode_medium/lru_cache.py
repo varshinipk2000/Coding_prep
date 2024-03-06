@@ -3,11 +3,9 @@
 from collections import deque
 class LRUCache:
 
-    stack = deque()
-    cache = {}
-    n = 0
-
     def __init__(self, capacity: int):
+        self.stack = deque()
+        self.cache = {}
         self.n = capacity        
 
     def get(self, key: int) -> int:
@@ -21,7 +19,8 @@ class LRUCache:
         return -1        
 
     def put(self, key: int, value: int) -> None:
-        if self.n==len(self.cache):
+
+        if self.n==len(self.cache) and key not in self.cache.keys():
             removekey = self.stack.popleft()
             del self.cache[removekey] #cache.del(remove)
         self.cache[key] = value
