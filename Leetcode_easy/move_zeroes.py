@@ -5,19 +5,12 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        c = 0
-        for i in range(0,len(nums)): #loop to count zeroes
-            if nums[i]==0:
-                c+=1
+        count = 0
+        for ele in nums:
+            if ele ==0:
+                count+=1
 
-        temp_c = c
-
-        while c>0:
+        while(count):
             nums.remove(0)
-            c-=1
-
-        while temp_c>0:
             nums.append(0)
-            temp_c-=1
-
-        return nums
+            count-=1     
